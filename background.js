@@ -7,11 +7,16 @@ function onCreated() {
   }
 
 browser.contextMenus.create({
-    id: "spanish-dict",
-    title: "Search on SpanishDict",
+    id: "translate",
+    title: "SpanishDict Translation",
     contexts: ["selection"]
 }, onCreated);
 
+browser.contextMenus.create({
+    id: "conjugate",
+    title: "SpanishDict Conjugation",
+    contexts: ["selection"]
+}, onCreated);
 
 /*
 Search the term(s) on spanishdict
@@ -19,8 +24,19 @@ Search the term(s) on spanishdict
 browser.contextMenus.onClicked.addListener(contextMenuAction);
 
 function contextMenuAction(info, tab){
-    const queryUrl = "https://www.spanishdict.com/translate/"+ info.selectionText;
-    
-    browser.tabs.create({
-        url: queryUrl});
+    const selectionText = info.selectionText;
+
+    const translateUrl = "https://www.spanishdict.com/translate/"+ selectionText;
+    const conjugateUrl = "https://www.spanishdict.com/conjugate/"+ selectionText;
+
+    switch(info.menuItemId){
+      case "translate":
+        browser.tabs.create({
+          url: translateUrl});
+        break;
+      case "conjugate":
+        browser.tabs.create({
+          url: conjugateUrl});
+        break;
+    }
 }

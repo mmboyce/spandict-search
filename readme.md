@@ -1,10 +1,9 @@
 # Spanish Dict Menu
 
-This (currently firefox) extension takes a text selection and sends it to [SpanishDict's](https://www.spanishdict.com/) translator.
+This (*currently firefox*) extension takes a text selection and sends it to [SpanishDict's](https://www.spanishdict.com/) translator.
 
 ## Plans
 
-- Conjugation
 - Examples
 - Pronunciation
 - Phrases
