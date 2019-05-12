@@ -4,7 +4,6 @@ This (*currently firefox*) extension takes a text selection and sends it to [Spa
 
 ## Plans
 
-- Examples
 - Pronunciation
 - Phrases
 - Menu within to separate via different features, including **conjugation**, **examples**, **pronunciation**, and **phrases**
