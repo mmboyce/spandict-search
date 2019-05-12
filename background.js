@@ -8,13 +8,19 @@ function onCreated() {
 
 browser.contextMenus.create({
     id: "translate",
-    title: "SpanishDict Translation",
+    title: "Translation",
     contexts: ["selection"]
 }, onCreated);
 
 browser.contextMenus.create({
     id: "conjugate",
-    title: "SpanishDict Conjugation",
+    title: "Conjugation",
+    contexts: ["selection"]
+}, onCreated);
+
+browser.contextMenus.create({
+    id: "examples",
+    title: "Examples",
     contexts: ["selection"]
 }, onCreated);
 
@@ -24,10 +30,13 @@ Search the term(s) on spanishdict
 browser.contextMenus.onClicked.addListener(contextMenuAction);
 
 function contextMenuAction(info, tab){
+    const baseUrl = "https://www.spanishdict.com/"
     const selectionText = info.selectionText;
 
-    const translateUrl = "https://www.spanishdict.com/translate/"+ selectionText;
-    const conjugateUrl = "https://www.spanishdict.com/conjugate/"+ selectionText;
+    const translateUrl = baseUrl + "translate/" + selectionText;
+    const conjugateUrl = baseUrl + "conjugate/" + selectionText;
+    const examplesUrl = baseUrl + "examples/" + selectionText;
+
 
     switch(info.menuItemId){
       case "translate":
@@ -38,5 +47,9 @@ function contextMenuAction(info, tab){
         browser.tabs.create({
           url: conjugateUrl});
         break;
+      case "examples":
+          browser.tabs.create({
+            url: examplesUrl});
+          break;
     }
 }
