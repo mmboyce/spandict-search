@@ -24,6 +24,12 @@ browser.contextMenus.create({
     contexts: ["selection"]
 }, onCreated);
 
+browser.contextMenus.create({
+  id: "phrases",
+  title: "Phrases",
+  contexts: ["selection"]
+}, onCreated);
+
 /*
 Search the term(s) on spanishdict
 */ 
@@ -36,7 +42,7 @@ function contextMenuAction(info, tab){
     const translateUrl = baseUrl + "translate/" + selectionText;
     const conjugateUrl = baseUrl + "conjugate/" + selectionText;
     const examplesUrl = baseUrl + "examples/" + selectionText;
-
+    const phrasesUrl = baseUrl + "phrases/" + selectionText;
 
     switch(info.menuItemId){
       case "translate":
@@ -50,6 +56,10 @@ function contextMenuAction(info, tab){
       case "examples":
           browser.tabs.create({
             url: examplesUrl});
+          break;
+      case "phrases":
+          browser.tabs.create({
+            url: phrasesUrl});
           break;
     }
 }
